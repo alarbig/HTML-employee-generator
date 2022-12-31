@@ -9,30 +9,6 @@ const generateHTML = require('./src/generateHTML')
 
 const team = []
 
-// function starterQuestion(starter) {
-//     return inquirer.prompt(
-//         [{
-//         type: 'input', 
-//         message: 'Would you like to add a manager or employee?',
-//         name:  'managerOrEmployee'
-//     }])
-//     .then ((val) => {
-//     if (val.starter === 'manager'){
-//         managerAdd();
-//     } else if (val.employeeAdd === 'employee'){
-//         employeeAdd();
-//     }})
-// }
-
-// const starterQuestion = (starter) =>{
-//     return inquirer.prompt(
-//             if (starter === 'manager') {
-//                 return managerAdd
-//             }
-        
-//     )
-// }
-
 const managerAdd = () =>{
     return inquirer.prompt(
         [{
@@ -63,7 +39,6 @@ const managerAdd = () =>{
 ])
 
 .then(managerData => {
-    // console.log(managerData);
     const newManager = new Manager(
         managerData.title,
         managerData.name,
@@ -72,54 +47,120 @@ const managerAdd = () =>{
         managerData.phone
     )
     team.push(newManager)
-    console.log(team)
-    employeeAdd() // this function runs the next set of questions and pushes the data into an array
-    createHtml(team)
-    console.log('thisisteamData',team)
+    addEmployee()
 })
 
 }
 
-const employeeAdd = () => {
+const generateEngineer = () => {
     return inquirer.prompt(
-        [{
-        type: 'input', 
-        message:'What type of employee is this? Engineer or intern?',
-        name: 'title',
-        }, 
-        {
+        [ {
         type: 'input', 
         message:'What is the employees name?',
         name: 'name',
         }, 
         {
-        type: 'input', 
-        message:'Please enter their email address: ',
-        name: 'email',
+            type: 'input', 
+            message:'Please enter their email address: ',
+            name: 'email',
         },
         {type: 'input', 
         message:'Please enter their employee ID: ',
         name: 'id',
         },
+        {
+        type: 'input', 
+        message:'What is this users Github account name?',
+        name: 'github',
+            }
     ])
 
     .then(employeeData => {
-        const newEmployee = new Employee(
-            employeeData.title,
+        const engineer = new Engineer(
+            employeeData.github,
             employeeData.name, 
             employeeData.email, 
             employeeData.id,
         )
-            team.push(newEmployee)
-            console.log(team)
+            team.push(engineer)
+            addEmployee()
+    })
+
+
+}
+
+const generateIntern = () => {
+    return inquirer.prompt(
+        [ {
+        type: 'input', 
+        message:'What is the employees name?',
+        name: 'name',
+        }, 
+        {
+            type: 'input', 
+            message:'Please enter their email address: ',
+            name: 'email',
+        },
+        {type: 'input', 
+        message:'Please enter their employee ID: ',
+        name: 'id',
+        },
+        {
+        type: 'input', 
+        message:'What school are they attending?',
+        name: 'school',
+            }
+    ])
+
+    .then(employeeData => {
+        const intern = new Intern(
+            employeeData.school,
+            employeeData.name, 
+            employeeData.email, 
+            employeeData.id,
+        )
+            team.push(intern)
+            
+            addEmployee()
     })
 }
 
-// function writeToFile(fileName, data) {
-//     fs.writeFile('./index.html', data, err => {
-//         err ? console.error(err) : console.log('Success! Your data was entered successfully!')
-//     })
-// }
+const chooseEmployee = () =>{
+    inquirer.prompt([
+        {
+            type:'list', 
+            message:'Is this an engineer or an intern?',
+            name:'employeeType', 
+            choices:['intern', 'engineer']
+        }
+    ]).then(function (answer){
+        if (answer.employeeType === 'intern'){
+            generateIntern();
+            console.log('Adding Intern!')
+        } else {
+            generateEngineer();
+        }
+    })
+}
+
+function addEmployee(){
+
+    inquirer.prompt([
+        {
+            type:'list',
+            message: 'Would you like to add an employee?',
+            name: 'choice', 
+            choices: ['yes', 'no']
+        }
+    ]).then(function (answer){
+        if (answer.choice === 'yes'){
+            chooseEmployee()
+        } else {
+            createHtml();
+        }
+    })
+
+}
 
 function createHtml() {
     const pageHtml = generateHTML(team)
@@ -131,13 +172,6 @@ function createHtml() {
 
 function init() {
     managerAdd()
-    // .then (employeeAdd())
-    //     .then(input => {
-    //         return generateHTML(input);
-    //     })
-    //     .then(html => {
-    //         writeToFile('./index.html', html);
-    //     })
 }
 
 init();

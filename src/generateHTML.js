@@ -1,43 +1,56 @@
-const Employee = require("../lib/employee");
-const Engineer = require("../lib/engineer");
-const Manager = require('../lib/manager')
+
 const htmlArray = []
-function generateManager(manager) {
-    for (let i = 0; i < manager.length; i++) {
-        if (manager[i].getRole() === 'Manager'){
+function generateManager(employees) {
+    for (let i = 0; i < employees.length; i++) { 
+        if (employees[i].getRole() === 'Manager'){
             const card = `
             <div class = 'main-page'>
                 <div class="card" style="width: 18rem;">
                     <img class="card-img-top" src="..." alt="Card image cap">
                     <div class="card-body">
-                      <h5 class="card-title">${manager[i].title}</h5>
-                      <p class="card-text">${manager[i].name}</p>
-                      <p class="card-text">${manager[i].email}</p>
-                      <p class="card-text">${manager[i].id}</p>
-                      <p class="card-text">${manager[i].phone}</p>
+                      <h5 class="card-title">${employees[i].title}</h5>
+                      <p class="card-text">${employees[i].name}</p>
+                      <p class="card-text">${employees[i].email}</p>
+                      <p class="card-text">${employees[i].id}</p>
+                      <p class="card-text">${employees[i].phone}</p>
+                    </div>
+                  </div>
+                </div>`
+                htmlArray.push(card)
+        } else if (employees[i].getRole() === 'Intern'){
+            const card = `
+            <div class = 'main-page'>
+                <div class="card" style="width: 18rem;">
+                    <img class="card-img-top" src="..." alt="Card image cap">
+                    <div class="card-body">
+                      <h5 class="card-title">${employees[i].title}</h5>
+                      <p class="card-text">${employees[i].name}</p>
+                      <p class="card-text">${employees[i].email}</p>
+                      <p class="card-text">${employees[i].id}</p>
+                      <p class="card-text">${employees[i].phone}</p>
+                    </div>
+                  </div>
+                </div>`
+                htmlArray.push(card)
+        } else if (employees[i].getRole() === 'Engineer'){
+            const card = `
+            <div class = 'main-page'>
+                <div class="card" style="width: 18rem;">
+                    <img class="card-img-top" src="..." alt="Card image cap">
+                    <div class="card-body">
+                      <h5 class="card-title">${employees[i].title}</h5>
+                      <p class="card-text">${employees[i].name}</p>
+                      <p class="card-text">${employees[i].email}</p>
+                      <p class="card-text">${employees[i].id}</p>
+                      <p class="card-text">${employees[i].phone}</p>
                     </div>
                   </div>
                 </div>`
                 htmlArray.push(card)
         }
-    }
-    // for (let i = 0; i < employee.length; i++) {
-    //     if (employee[i].getRole() === 'intern'){
-    //         return `
-    //         //     <div class = 'main-page'>
-    //         //         <div class="card" style="width: 18rem;">
-    //         //             <img class="card-img-top" src="..." alt="Card image cap">
-    //         //             <div class="card-body">
-    //         //               <h5 class="card-title">Intern</h5>
-    //         //               <p class="card-text">${intern.name}</p>
-    //         //               <p class="card-text">${intern.email}</p>
-    //         //             </div>
-    //         //           </div>
-    //         //         </div>`
-    //     }
         
-    // }
-
+    } 
+    
 const template = `<!DOCTYPE html>
 <html lang="en">
 <head>
@@ -50,7 +63,12 @@ const template = `<!DOCTYPE html>
 </head>
 <body>
 <div class = 'main-page'>
-    ${htmlArray}
+
+    
+${htmlArray}
+
+
+    
     </div>
 </body>
 </html>`
@@ -58,40 +76,4 @@ const template = `<!DOCTYPE html>
 return template
 
 }
-
-
-// function generateIntern(intern){
-//     return `
-//     <div class = 'main-page'>
-//         <div class="card" style="width: 18rem;">
-//             <img class="card-img-top" src="..." alt="Card image cap">
-//             <div class="card-body">
-//               <h5 class="card-title">Intern</h5>
-//               <p class="card-text">${intern.name}</p>
-//               <p class="card-text">${intern.email}</p>
-//             </div>
-//           </div>
-//         </div>`
-// }
-
-// function generateEngineer(engineer){
-//     return `
-//     <div class = 'main-page'>
-//         <div class="card" style="width: 18rem;">
-//             <img class="card-img-top" src="..." alt="Card image cap">
-//             <div class="card-body">
-//               <h5 class="card-title">Engineer</h5>
-//               <p class="card-text">${engineer.name}</p>
-//               <p class="card-text">${engineer.email}</p>
-//             </div>
-//           </div>
-//         </div>`
-// }
-
-// function generateHTML(team) { }
-  
-// }
 module.exports = generateManager;
-// module.exports = generateIntern;
-// module.exports = generateEngineer;
-// module.exports = generateHTML;

@@ -9,7 +9,7 @@ function generateManager(employees) {
                     <div class="card-body" class = 'manager'>
                     <h5 class="card-title">Manager</h5>
                       <p class="card-text">${employees[i].name}</p>
-                      <p class="card-text">${employees[i].email}</p>
+                      <p class="card-text"><a href="mailto:${employees[i].email}">${employees[i].email}</a></p>
                       <p class="card-text">Employee ID: ${employees[i].id}</p>
                       <p class="card-text">Phone number: ${employees[i].phone}</p>
                     </div>
@@ -23,7 +23,7 @@ function generateManager(employees) {
                     <div class="card-body">
                       <h5 class="card-title">Intern</h5>
                       <p class="card-text">${employees[i].name}</p>
-                      <p class="card-text">${employees[i].email}</p>
+                      <p class="card-text"><a href="mailto:${employees[i].email}">${employees[i].email}</a></p>
                       <p class="card-text">Employee ID: ${employees[i].id}</p>
                       <p class="card-text">School: ${employees[i].school}</p>
                     </div>
@@ -37,9 +37,9 @@ function generateManager(employees) {
                     <div class="card-body">
                       <h5 class="card-title">Engineer</h5>
                       <p class="card-text">${employees[i].name}</p>
-                      <p class="card-text">${employees[i].email}</p>
+                      <p class="card-text"><a href="mailto:${employees[i].email}">${employees[i].email}</a></p>
                       <p class="card-text">Employee ID: ${employees[i].id}</p>
-                      <p class="card-text">Github: ${employees[i].github}</p>
+                      <p class="card-text">Github: <a href="https://${employees[i].github}" target="_blank">${employees[i].github}</a></p>
                     </div>
                   </div>
                 </div>`

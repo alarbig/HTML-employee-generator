@@ -11,11 +11,7 @@ const team = []
 
 const managerAdd = () =>{
     return inquirer.prompt(
-        [{
-            type: 'input', 
-            message:'What is this Managers title?',
-            name: 'title',
-        },
+        [
     {
         type: 'input', 
         message:'What is the managers name?',
@@ -40,7 +36,6 @@ const managerAdd = () =>{
 
 .then(managerData => {
     const newManager = new Manager(
-        managerData.title,
         managerData.name,
         managerData.email,
         managerData.id, 
@@ -77,10 +72,11 @@ const generateEngineer = () => {
 
     .then(employeeData => {
         const engineer = new Engineer(
-            employeeData.github,
+            
             employeeData.name, 
             employeeData.email, 
             employeeData.id,
+            employeeData.github
         )
             team.push(engineer)
             addEmployee()
@@ -114,10 +110,11 @@ const generateIntern = () => {
 
     .then(employeeData => {
         const intern = new Intern(
-            employeeData.school,
+            
             employeeData.name, 
             employeeData.email, 
             employeeData.id,
+            employeeData.school
         )
             team.push(intern)
             
@@ -131,12 +128,11 @@ const chooseEmployee = () =>{
             type:'list', 
             message:'Is this an engineer or an intern?',
             name:'employeeType', 
-            choices:['intern', 'engineer']
+            choices:['Intern', 'Engineer']
         }
     ]).then(function (answer){
-        if (answer.employeeType === 'intern'){
+        if (answer.employeeType === 'Intern'){
             generateIntern();
-            console.log('Adding Intern!')
         } else {
             generateEngineer();
         }

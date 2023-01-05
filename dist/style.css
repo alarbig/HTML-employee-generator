@@ -5,4 +5,24 @@ body {
 .main-page {
     padding: 10px, 10px, 10px, 10px;
     color: black;
+    padding-left: 25px;
+    padding-top: 10px;
+}
+
+.card {
+    padding-left: 25px;
+    display: inline-block;
+    align-items: center;
+}
+
+.manager {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.employees {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
 }

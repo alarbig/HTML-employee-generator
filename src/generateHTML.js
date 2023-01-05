@@ -4,45 +4,42 @@ function generateManager(employees) {
     for (let i = 0; i < employees.length; i++) { 
         if (employees[i].getRole() === 'Manager'){
             const card = `
-            <div class = 'main-page'>
+            <div class = 'main-page manager'>
                 <div class="card" style="width: 18rem;">
-                    <img class="card-img-top" src="..." alt="Card image cap">
-                    <div class="card-body">
-                      <h5 class="card-title">${employees[i].title}</h5>
+                    <div class="card-body" class = 'manager'>
+                    <h5 class="card-title">Manager</h5>
                       <p class="card-text">${employees[i].name}</p>
                       <p class="card-text">${employees[i].email}</p>
-                      <p class="card-text">${employees[i].id}</p>
-                      <p class="card-text">${employees[i].phone}</p>
+                      <p class="card-text">Employee ID: ${employees[i].id}</p>
+                      <p class="card-text">Phone number: ${employees[i].phone}</p>
                     </div>
                   </div>
                 </div>`
                 htmlArray.push(card)
         } else if (employees[i].getRole() === 'Intern'){
             const card = `
-            <div class = 'main-page'>
+            <div class = 'main-page employee'>
                 <div class="card" style="width: 18rem;">
-                    <img class="card-img-top" src="..." alt="Card image cap">
                     <div class="card-body">
-                      <h5 class="card-title">${employees[i].title}</h5>
+                      <h5 class="card-title">Intern</h5>
                       <p class="card-text">${employees[i].name}</p>
                       <p class="card-text">${employees[i].email}</p>
-                      <p class="card-text">${employees[i].id}</p>
-                      <p class="card-text">${employees[i].phone}</p>
+                      <p class="card-text">Employee ID: ${employees[i].id}</p>
+                      <p class="card-text">School: ${employees[i].school}</p>
                     </div>
                   </div>
                 </div>`
                 htmlArray.push(card)
         } else if (employees[i].getRole() === 'Engineer'){
             const card = `
-            <div class = 'main-page'>
+            <div class = 'main-page employee'>
                 <div class="card" style="width: 18rem;">
-                    <img class="card-img-top" src="..." alt="Card image cap">
                     <div class="card-body">
-                      <h5 class="card-title">${employees[i].title}</h5>
+                      <h5 class="card-title">Engineer</h5>
                       <p class="card-text">${employees[i].name}</p>
                       <p class="card-text">${employees[i].email}</p>
-                      <p class="card-text">${employees[i].id}</p>
-                      <p class="card-text">${employees[i].phone}</p>
+                      <p class="card-text">Employee ID: ${employees[i].id}</p>
+                      <p class="card-text">Github: ${employees[i].github}</p>
                     </div>
                   </div>
                 </div>`
